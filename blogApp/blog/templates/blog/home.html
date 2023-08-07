@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %} Home {% endblock %}
+
+{% block content %}
+    <main class="bg-gray-100 flex xs:flex-col tablet:flex-row laptopL:justify-center">
+        <div id="topics" class="bg-slate-50 xs:p-4 xs:h-52 xs:block xs:mb-5 tablet:mt-6 tablet:mr-4 tablet:ml-4 tablet:h-72 tablet:w-72 tablet:p-4">
+            <h1 class="font-bold xs:text-2xl tablet:text-3xl xs:mb-4 xs:text-center">Topics</h1>
+            <ul>
+                <li class="xs:text-center xs:mb-1 tablet:mb-4">
+                    <a class="xs:text-xl tablet:text-xl xs:mb-4" href="">Health</a>
+                </li>
+                <li class="xs:text-center xs:mb-1 tablet:mb-4">
+                    <a class="xs:text-xl tablet:text-xl xs:mb-4" href="">Technology</a>
+                </li>
+                <li class="xs:text-center xs:mb-1 tablet:mb-4">
+                    <a class="xs:text-xl tablet:text-xl xs:mb-4" href="">Politics</a>
+                </li>
+                <li class="xs:text-center xs:mb-1">
+                    <a class="xs:text-xl tablet:text-xl xs:mb-4" href="">Sports</a>
+                </li>
+            </ul>
+        </div>
+        <div class="cards">
+            <div class="bg-slate-50 xs:p-4 xs:mb-3 tablet:mt-6 tablet:mr-3">
+                <div class="lg:relative lg:pb-14">
+                    <h1 class="xs:text-2xl tablet:text-4xl font-semibold">Sağlık'ta Yazılımın Önemi</h1>
+                    <img src="../img/1.png" alt="1.jpg">
+                    <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit delectus minima obcaecati?</p>
+                    <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 xs:text-center xs:ml-24 xs:mt-2 mobileM:ml-32 mobileL:ml-36 tablet:ml-96 lg:absolute lg:right-8"><a href="#">Details</a></button>
+                </div>   
+            </div>
+            <div class="bg-gray-200 xs:p-4 xs:mb-3 tablet:mt-6 tablet:mr-3">
+                <div class="lg:relative lg:pb-14">
+                    <h1 class="xs:text-2xl tablet:text-4xl">Sağlık'ta Yazılımın Önemi</h1>
+                    <img src="../img/1.png" alt="1.jpg">
+                    <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit delectus minima obcaecati?</p>
+                    <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 xs:text-center xs:ml-24 xs:mt-2 mobileM:ml-32 mobileL:ml-36 tablet:ml-96 lg:absolute lg:right-8"><a href="#">Details</a></button>
+                </div>   
+            </div>
+            <div class="bg-gray-200 xs:p-4 xs:mb-3 tablet:mt-6 tablet:mr-3">
+                <div class="lg:relative lg:pb-14">
+                    <h1 class="xs:text-2xl tablet:text-4xl">Sağlık'ta Yazılımın Önemi</h1>
+                    <img src="../img/1.png" alt="1.jpg">
+                    <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit delectus minima obcaecati?</p>
+                    <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 xs:text-center xs:ml-24 xs:mt-2 mobileM:ml-32 mobileL:ml-36 tablet:ml-96 lg:absolute lg:right-8"><a href="#">Details</a></button>
+                </div>   
+            </div>
+            <div class="bg-gray-200 xs:p-4 xs:mb-3 tablet:mt-6 tablet:mr-3">
+                <div class="lg:relative lg:pb-14">
+                    <h1 class="xs:text-2xl tablet:text-4xl">Sağlık'ta Yazılımın Önemi</h1>
+                    <img src="../img/1.png" alt="1.jpg">
+                    <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit delectus minima obcaecati?</p>
+                    <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 xs:text-center xs:ml-24 xs:mt-2 mobileM:ml-32 mobileL:ml-36 tablet:ml-96 lg:absolute lg:right-8"><a href="#">Details</a></button>
+                </div>   
+            </div>
+        </div>
+        
+    </main>
+{% endblock %}
