@@ -2,58 +2,82 @@
 {% load static %}
 {% block title %} Home {% endblock %}
 
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'blogApp/static/css/home.css' %}">
+{% endblock %}
+
 {% block content %}
     <main class="bg-gray-100 flex xs:flex-col tablet:flex-row laptopL:justify-center">
-        <div id="topics" class="bg-slate-50 xs:p-4 xs:h-52 xs:block xs:mb-5 tablet:mt-6 tablet:mr-4 tablet:ml-4 tablet:h-72 tablet:w-72 tablet:p-4">
-            <h1 class="font-bold xs:text-2xl tablet:text-3xl xs:mb-4 xs:text-center">Topics</h1>
-            <ul>
-                <li class="xs:text-center xs:mb-1 tablet:mb-4">
-                    <a class="xs:text-xl tablet:text-xl xs:mb-4" href="">Health</a>
-                </li>
-                <li class="xs:text-center xs:mb-1 tablet:mb-4">
-                    <a class="xs:text-xl tablet:text-xl xs:mb-4" href="">Technology</a>
-                </li>
-                <li class="xs:text-center xs:mb-1 tablet:mb-4">
-                    <a class="xs:text-xl tablet:text-xl xs:mb-4" href="">Politics</a>
-                </li>
-                <li class="xs:text-center xs:mb-1">
-                    <a class="xs:text-xl tablet:text-xl xs:mb-4" href="">Sports</a>
-                </li>
-            </ul>
+        <div class="flex flex-col lg:basis-1/4">
+            <div id="topics" class="bg-slate-50 xs:p-4 xs:h-60 xs:block xs:mb-5 tablet:mt-6 tablet:mr-4 tablet:ml-4 tablet:h-80 tablet:p-4">
+                <h1 class="font-bold xs:text-2xl tablet:text-3xl xs:mb-4 xs:text-center">Topics</h1>
+                <hr>
+                <ul>
+                    <li class="xs:mb-1 xs:text-center xs:p-1 xs:hover:bg-gray-100 tablet:text-left xs:mt-3 tablet:mb-5 tablet:mt-3">
+                        <i class="fa-solid fa-notes-medical mr-2"></i>
+                        <a class="xs:text-xl tablet:text-xl xs:mb-4" href="">Health</a>
+                    </li>
+                    <li class="xs:mb-1 xs:text-center xs:p-1 xs:hover:bg-gray-100 tablet:text-left tablet:mb-5">
+                        <i class="fa-solid fa-microchip mr-2"></i>
+                        <a class="xs:text-xl tablet:text-xl xs:mb-4" href="">Technology</a>
+                    </li>
+                    <li class="xs:mb-1 xs:text-center xs:p-1 xs:hover:bg-gray-100 tablet:text-left tablet:mb-5">
+                        <i class="fa-solid fa-landmark mr-2"></i>
+                        <a class="xs:text-xl tablet:text-xl xs:mb-4" href="">Politics</a>
+                    </li>
+                    <li class="xs:mb-1 xs:text-center xs:p-1 xs:hover:bg-gray-100 tablet:text-left">
+                        <i class="fa-solid fa-dumbbell mr-2"></i>
+                        <a class="xs:text-xl tablet:text-xl xs:mb-4" href="">Sports</a>
+                    </li>
+                </ul>
+            </div>
+            <div id="most" class="bg-slate-50 xs:mb-3 xs:p-4 tablet:mr-4">
+                    <h1 class="xs:text-2xl xs:font-bold xs:text-center xs:mb-2">Bu Haftanın En Çok Beğenileni</h1>
+                    <hr>
+                    <div class="bg-slate-50 xs:py-6 xs:mb-3 tablet:mr-3">
+                        <div class="lg:relative lg:pb-14 xs:relative">
+                            <h1 class="xs:text-2xl tablet:text-3xl font-semibold">Sağlık'ta Yazılımın Önemi</h1>
+                            <img src="http://127.0.0.1:8000/blog/templates/blog/img/1.png" alt="1.jpg">
+                            <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit delectus minima obcaecati?</p>
+                            <button type="button" class="text-white bg-indigo-400 border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 absolute xs:right-0 tablet:ml-4"><a href="#">Details</a></button>
+                        </div>   
+                    </div>
+            </div>
         </div>
-        <div class="cards">
-            <div class="bg-slate-50 xs:p-4 xs:mb-3 tablet:mt-6 tablet:mr-3">
-                <div class="lg:relative lg:pb-14">
-                    <h1 class="xs:text-2xl tablet:text-4xl font-semibold">Sağlık'ta Yazılımın Önemi</h1>
-                    <img src="../img/1.png" alt="1.jpg">
+        <div id="cards" class="lg:basis-3/4 tablet:mt-6">
+            <div class="card bg-slate-50 xs:p-4 xs:pb-12 xs:mb-3 tablet:mr-3">
+                <div class="lg:relative lg:pb-14 xs:relative">
+                    <h1 class="xs:text-2xl tablet:text-3xl font-semibold">Sağlık'ta Yazılımın Önemi</h1>
+                    <img src="http://127.0.0.1:8000/blog/templates/blog/img/1.png" alt="1.jpg">
                     <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit delectus minima obcaecati?</p>
-                    <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 xs:text-center xs:ml-24 xs:mt-2 mobileM:ml-32 mobileL:ml-36 tablet:ml-96 lg:absolute lg:right-8"><a href="#">Details</a></button>
+                    <button type="button" class="text-white bg-indigo-400 border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 absolute xs:right-0 tablet:ml-4"><a href="#">Details</a></button>
                 </div>   
             </div>
-            <div class="bg-gray-200 xs:p-4 xs:mb-3 tablet:mt-6 tablet:mr-3">
-                <div class="lg:relative lg:pb-14">
-                    <h1 class="xs:text-2xl tablet:text-4xl">Sağlık'ta Yazılımın Önemi</h1>
-                    <img src="../img/1.png" alt="1.jpg">
+            <div class="card bg-slate-50 xs:p-4 xs:pb-12 xs:mb-3 tablet:mr-3">
+                <div class="lg:relative lg:pb-14 xs:relative">
+                    <h1 class="xs:text-2xl tablet:text-3xl font-semibold">Sağlık'ta Yazılımın Önemi</h1>
+                    <img src="http://127.0.0.1:8000/blog/templates/blog/img/1.png" alt="1.jpg">
                     <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit delectus minima obcaecati?</p>
-                    <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 xs:text-center xs:ml-24 xs:mt-2 mobileM:ml-32 mobileL:ml-36 tablet:ml-96 lg:absolute lg:right-8"><a href="#">Details</a></button>
+                    <button type="button" class="text-white bg-indigo-400 border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 absolute xs:right-0 tablet:ml-4"><a href="#">Details</a></button>
                 </div>   
             </div>
-            <div class="bg-gray-200 xs:p-4 xs:mb-3 tablet:mt-6 tablet:mr-3">
-                <div class="lg:relative lg:pb-14">
-                    <h1 class="xs:text-2xl tablet:text-4xl">Sağlık'ta Yazılımın Önemi</h1>
-                    <img src="../img/1.png" alt="1.jpg">
+            <div class=" card bg-slate-50 xs:p-4 xs:pb-12 xs:mb-3 tablet:mr-3">
+                <div class="lg:relative lg:pb-14 xs:relative">
+                    <h1 class="xs:text-2xl tablet:text-3xl font-semibold">Sağlık'ta Yazılımın Önemi</h1>
+                    <img src="http://127.0.0.1:8000/blog/templates/blog/img/1.png" alt="1.jpg">
                     <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit delectus minima obcaecati?</p>
-                    <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 xs:text-center xs:ml-24 xs:mt-2 mobileM:ml-32 mobileL:ml-36 tablet:ml-96 lg:absolute lg:right-8"><a href="#">Details</a></button>
+                    <button type="button" class="text-white bg-indigo-400 border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 absolute xs:right-0 tablet:ml-4"><a href="#">Details</a></button>
                 </div>   
             </div>
-            <div class="bg-gray-200 xs:p-4 xs:mb-3 tablet:mt-6 tablet:mr-3">
-                <div class="lg:relative lg:pb-14">
-                    <h1 class="xs:text-2xl tablet:text-4xl">Sağlık'ta Yazılımın Önemi</h1>
-                    <img src="../img/1.png" alt="1.jpg">
+            <div class="card bg-slate-50 xs:p-4 xs:pb-12 xs:mb-3 tablet:mr-3">
+                <div class="lg:relative lg:pb-14 xs:relative">
+                    <h1 class="xs:text-2xl tablet:text-3xl font-semibold">Sağlık'ta Yazılımın Önemi</h1>
+                    <img src="http://127.0.0.1:8000/blog/templates/blog/img/1.png" alt="1.jpg">
                     <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit delectus minima obcaecati?</p>
-                    <button type="button" class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700 xs:text-center xs:ml-24 xs:mt-2 mobileM:ml-32 mobileL:ml-36 tablet:ml-96 lg:absolute lg:right-8"><a href="#">Details</a></button>
+                    <button type="button" class="text-white bg-indigo-400 border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 absolute xs:right-0 tablet:ml-4"><a href="#">Details</a></button>
                 </div>   
             </div>
+            
         </div>
         
     </main>
