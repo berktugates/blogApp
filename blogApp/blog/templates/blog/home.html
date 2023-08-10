@@ -13,22 +13,12 @@
                 <h1 class="font-bold xs:text-2xl tablet:text-3xl xs:mb-4 xs:text-center">Topics</h1>
                 <hr>
                 <ul>
+                    {% for c in category %}
                     <li class="xs:mb-1 xs:text-center xs:p-1 xs:hover:bg-gray-100 tablet:text-left xs:mt-3 tablet:mb-5 tablet:mt-3">
                         <i class="fa-solid fa-notes-medical mr-2"></i>
-                        <a class="xs:text-xl tablet:text-xl xs:mb-4" href="">Health</a>
+                        <a class="xs:text-xl tablet:text-xl xs:mb-4" href="">{{c.name}}</a>
                     </li>
-                    <li class="xs:mb-1 xs:text-center xs:p-1 xs:hover:bg-gray-100 tablet:text-left tablet:mb-5">
-                        <i class="fa-solid fa-microchip mr-2"></i>
-                        <a class="xs:text-xl tablet:text-xl xs:mb-4" href="">Technology</a>
-                    </li>
-                    <li class="xs:mb-1 xs:text-center xs:p-1 xs:hover:bg-gray-100 tablet:text-left tablet:mb-5">
-                        <i class="fa-solid fa-landmark mr-2"></i>
-                        <a class="xs:text-xl tablet:text-xl xs:mb-4" href="">Politics</a>
-                    </li>
-                    <li class="xs:mb-1 xs:text-center xs:p-1 xs:hover:bg-gray-100 tablet:text-left">
-                        <i class="fa-solid fa-dumbbell mr-2"></i>
-                        <a class="xs:text-xl tablet:text-xl xs:mb-4" href="">Sports</a>
-                    </li>
+                    {% endfor %}
                 </ul>
             </div>
             <div id="most" class="bg-slate-50 xs:mb-3 xs:p-4 tablet:mr-4">
@@ -45,39 +35,18 @@
             </div>
         </div>
         <div id="cards" class="lg:basis-3/4 tablet:mt-6">
-            <div class="card bg-slate-50 xs:p-4 xs:pb-12 xs:mb-3 tablet:mr-3">
-                <div class="lg:relative lg:pb-14 xs:relative">
-                    <h1 class="xs:text-2xl tablet:text-3xl font-semibold">Sağlık'ta Yazılımın Önemi</h1>
-                    <img src="http://127.0.0.1:8000/blog/templates/blog/img/1.png" alt="1.jpg">
-                    <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit delectus minima obcaecati?</p>
-                    <button type="button" class="text-white bg-indigo-400 border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 absolute xs:right-0 tablet:ml-4"><a href="#">Details</a></button>
-                </div>   
-            </div>
-            <div class="card bg-slate-50 xs:p-4 xs:pb-12 xs:mb-3 tablet:mr-3">
-                <div class="lg:relative lg:pb-14 xs:relative">
-                    <h1 class="xs:text-2xl tablet:text-3xl font-semibold">Sağlık'ta Yazılımın Önemi</h1>
-                    <img src="http://127.0.0.1:8000/blog/templates/blog/img/1.png" alt="1.jpg">
-                    <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit delectus minima obcaecati?</p>
-                    <button type="button" class="text-white bg-indigo-400 border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 absolute xs:right-0 tablet:ml-4"><a href="#">Details</a></button>
-                </div>   
-            </div>
-            <div class=" card bg-slate-50 xs:p-4 xs:pb-12 xs:mb-3 tablet:mr-3">
-                <div class="lg:relative lg:pb-14 xs:relative">
-                    <h1 class="xs:text-2xl tablet:text-3xl font-semibold">Sağlık'ta Yazılımın Önemi</h1>
-                    <img src="http://127.0.0.1:8000/blog/templates/blog/img/1.png" alt="1.jpg">
-                    <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit delectus minima obcaecati?</p>
-                    <button type="button" class="text-white bg-indigo-400 border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 absolute xs:right-0 tablet:ml-4"><a href="#">Details</a></button>
-                </div>   
-            </div>
-            <div class="card bg-slate-50 xs:p-4 xs:pb-12 xs:mb-3 tablet:mr-3">
-                <div class="lg:relative lg:pb-14 xs:relative">
-                    <h1 class="xs:text-2xl tablet:text-3xl font-semibold">Sağlık'ta Yazılımın Önemi</h1>
-                    <img src="http://127.0.0.1:8000/blog/templates/blog/img/1.png" alt="1.jpg">
-                    <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit delectus minima obcaecati?</p>
-                    <button type="button" class="text-white bg-indigo-400 border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 absolute xs:right-0 tablet:ml-4"><a href="#">Details</a></button>
-                </div>   
-            </div>
-            
+            {% for blog in blogs %}
+                {% if blog.is_home and blog.is_active %}
+                <div class="card bg-slate-50 xs:p-4 xs:pb-12 xs:mb-3 tablet:mr-3">
+                    <div class="lg:relative lg:pb-14 xs:relative">
+                        <h1 class="xs:text-2xl tablet:text-3xl font-semibold">{{ blog.title }}</h1>
+                        <img src="" alt="1.jpg">
+                        <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">{{blog.description}}</p>
+                        <button type="button" class="text-white bg-indigo-400 border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 absolute xs:right-0 tablet:ml-4"><a href="#">Details</a></button>
+                    </div>   
+                </div>
+                {% endif%}  
+            {% endfor %}          
         </div>
         
     </main>

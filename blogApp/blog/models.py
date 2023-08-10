@@ -9,5 +9,11 @@ class Blog(models.Model):
     is_active = models.BooleanField(default=False)
     is_home = models.BooleanField(default=False)
 
+    def __str__(self) -> str:
+        return f"{self.title}"
+
 class Category(models.Model):
-    name = models.CharField(max_length=100)    
+    name = models.CharField(max_length=100)
+
+    def __str__(self) -> str:
+        return f"{self.name}"  
