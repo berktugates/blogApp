@@ -3,45 +3,57 @@
 {% block title %} Home {% endblock %}
 
 {% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'blogApp/static/css/home.css' %}">
+main #topics{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+main #most{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+main #cards .card{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
 {% endblock %}
 
 {% block content %}
     <main class="bg-gray-100 flex xs:flex-col tablet:flex-row laptopL:justify-center">
-        <div class="flex flex-col lg:basis-1/4">
-            <div id="topics" class="bg-slate-50 xs:p-4 xs:h-60 xs:block xs:mb-5 tablet:mt-6 tablet:mr-4 tablet:ml-4 tablet:h-80 tablet:p-4">
+        <div class="flex flex-col tablet:basis-1/2 lg:basis-1/4">
+            <div id="topics" class="bg-slate-50 xs:p-4 xs:h-64 xs:block xs:mb-5 tablet:mt-6 tablet:mr-4 tablet:ml-4 tablet:h-80 tablet:p-4">
                 <h1 class="font-bold xs:text-2xl tablet:text-3xl xs:mb-4 xs:text-center">Topics</h1>
                 <hr>
                 <ul>
                     {% for c in category %}
-                    <li class="xs:mb-1 xs:text-center xs:p-1 xs:hover:bg-gray-100 tablet:text-left xs:mt-3 tablet:mb-5 tablet:mt-3">
+                    <li class="hover:border-amber-300 xs:mb-1 xs:text-center xs:p-1 tablet:text-left xs:mt-3 tablet:mb-5 tablet:mt-3">
                         <i class="fa-solid fa-notes-medical mr-2"></i>
                         <a class="xs:text-xl tablet:text-xl xs:mb-4" href="">{{c.name}}</a>
                     </li>
                     {% endfor %}
                 </ul>
             </div>
-            <div id="most" class="bg-slate-50 xs:mb-3 xs:p-4 tablet:mr-4">
+            <div id="most" class="bg-slate-50 xs:mb-3 xs:p-4 tablet:mr-4 tablet:ml-4">
                     <h1 class="xs:text-2xl xs:font-bold xs:text-center xs:mb-2">Bu Haftanın En Çok Beğenileni</h1>
                     <hr>
-                    <div class="bg-slate-50 xs:py-6 xs:mb-3 tablet:mr-3">
-                        <div class="lg:relative lg:pb-14 xs:relative">
-                            <h1 class="xs:text-2xl tablet:text-3xl font-semibold">Sağlık'ta Yazılımın Önemi</h1>
-                            <img src="http://127.0.0.1:8000/blog/templates/blog/img/1.png" alt="1.jpg">
-                            <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugit delectus minima obcaecati?</p>
-                            <button type="button" class="text-white bg-indigo-400 border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 absolute xs:right-0 tablet:ml-4"><a href="#">Details</a></button>
-                        </div>   
-                    </div>
+                    {%for t in topweek%}
+                        {%if t.is_home%}
+                            <div class="bg-slate-50 xs:py-6 xs:mb-3 tablet:mr-3">
+                                <div class="lg:relative lg:pb-14 xs:relative">
+                                    <h1 class="xs:text-2xl xs:mb-2 tablet:text-3xl font-semibold">{{t.title}}</h1>
+                                    <img src="{{t.image.url}}" alt="">
+                                    <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">{{t.description|safe|slice:"0:200"}}</p>
+                                    <button type="button" class="text-white bg-indigo-400 border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 absolute xs:right-0 tablet:ml-4"><a href="#">Details</a></button>
+                                </div>   
+                            </div>
+                        {%endif%}
+                    {%endfor%}
             </div>
         </div>
-        <div id="cards" class="lg:basis-3/4 tablet:mt-6">
+        <div id="cards" class="tablet:1/2 lg:basis-3/4 tablet:mt-6">
             {% for blog in blogs %}
                 {% if blog.is_home and blog.is_active %}
                 <div class="card bg-slate-50 xs:p-4 xs:pb-12 xs:mb-3 tablet:mr-3">
-                    <div class="lg:relative lg:pb-14 xs:relative">
-                        <h1 class="xs:text-2xl tablet:text-3xl font-semibold">{{ blog.title }}</h1>
-                        <img src="" alt="1.jpg">
-                        <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">{{blog.description}}</p>
+                    <div class="xs:relative lg:relative">
+                        <h1 class="xs:text-2xl xs:mb-2 tablet:text-3xl font-semibold">{{ blog.title }}</h1>
+                        <img class="object-contain xs:w-2/3 tablet:w-1/4 lg:w-1/6" src="{{blog.image.url}}" alt="">
+                        <p class="object-contain xs:text-lg xs:mt-3 xs:mb-4 xs:text-lg tablet:text-xl">{{blog.description|safe|slice:"0:200"}}</p>
                         <button type="button" class="text-white bg-indigo-400 border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 absolute xs:right-0 tablet:ml-4"><a href="#">Details</a></button>
                     </div>   
                 </div>

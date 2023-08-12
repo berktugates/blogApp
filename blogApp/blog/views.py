@@ -1,12 +1,13 @@
 from django.shortcuts import render
-from blog.models import Blog,Category
+from blog.models import Blog,Category,TopWeek
 
 # Create your views here.
 
 def home(request):
     context = {
         "blogs" : Blog.objects.all(),
-        "category" : Category.objects.all()
+        "category" : Category.objects.all(),
+        "topweek" : TopWeek.objects.all()
     }
     return render(request, "blog/home.html", context)
 
