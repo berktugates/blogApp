@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block title %}Category{% endblock %}
+{% block css %}
+{% endblock %}
+
+{% block content %}
+    <div class="flex">
+        <div id="topics" class="bg-slate-50 xs:p-4 xs:h-68 xs:mb-5 tablet:mt-6 tablet:mr-4 tablet:ml-4 tablet:h-84 tablet:p-4">
+            <h1 class="font-bold xs:text-2xl tablet:text-3xl xs:mb-4 xs:text-center">Topics</h1>
+            <hr>
+            <ul>
+                {% for c in category %}
+                    {% if selected_category == c.slug %}
+                        <li class="xs:mb-1 xs:mt-1 xs:text-center xs:p-1 xs:bg-blue-500 xs:rounded-lg lg:p-2 tablet:text-left tablet:mb-5 tablet:mt-3">
+                            <i class="fa-solid fa-laptop-code"></i>
+                            <a class="xs:text-xl tablet:text-xl xs:mb-4" href="{% url 'blogs_by_category' slug=c.slug %}">{{c.name}}</a>
+                        </li>
+                    {% else %}
+                        <li class="xs:mb-1 xs:mt-1 xs:text-center xs:p-1 tablet:text-left tablet:mb-5 tablet:mt-3">
+                            <i class="fa-solid fa-laptop-code"></i>
+                            <a class="xs:text-xl tablet:text-xl xs:mb-4" href="{% url 'blogs_by_category' slug=c.slug %}">{{c.name}}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+        <div id="cards" class="tablet:1/2 lg:basis-3/4 tablet:mt-6">
+            {% for blog in blogs %}
+                    <div class="card bg-slate-50 xs:p-2 xs:pb-12 xs:mb-3 tablet:mr-3">
+                        <div class="xs:relative lg:relative">
+                            <h1 class="xs:text-2xl xs:mb-2 tablet:text-3xl font-semibold">{{ blog.title }}</h1>
+                            <img class="object-contain xs:w-2/3 tablet:w-1/4 lg:w-1/6" src="{{blog.image.url}}" alt="">
+                            <p class="object-contain xs:text-lg xs:mt-3 xs:mb-4 xs:text-lg tablet:text-xl">{{blog.description|safe|slice:"0:200"}}</p>
+                            <div id="author" class="xs:flex xs:items-center xs:mt-6 tablet:mt-12">
+                                <h1 class="text-gray-500 font-bold">{{blog.author}}</h1>
+                                <button type="button" class="text-white bg-indigo-400 border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 absolute xs:right-0 tablet:ml-4"><a href="#">Details</a></button>
+                            </div>
+                        </div>  
+                    </div> 
+            {% endfor %}          
+        </div>
+        <div>
+        </div>
+    </div>    
+{% endblock %}

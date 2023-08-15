@@ -17,8 +17,10 @@ def discover(request):
     }
     return render(request, "blog/discover.html",context)
 
-def account(request):
-    return render(request, "blog/account.html")
-
-def aboutus(request):
-    return render(request, "blog/aboutus.html")
+def blogs_by_category(request, slug):
+    context={
+        "blogs": Blog.objects.filter(is_active=True, categories__slug=slug),
+        "category" : Category.objects.all(),
+        "selected_category" : slug
+    }
+    return render(request, "blog/blogs_by_category.html", context)
