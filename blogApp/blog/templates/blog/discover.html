@@ -8,13 +8,18 @@
         <div id="editor-choice" class="bg-red-50 xs:mt-3 xs:p-4">
             <h1 class="xs:text-center xs:text-2xl xs:font-bold xs:mb-2">BatesApp Ekibinin Geçen Haftaki Favorisi</h1>
             <hr>
-            <h1 class="xs:text-xl xs:font-semibold xs:ml-2 xs:mt-2">Küresel Isınma Sorunu</h1>
-            <img src="http://127.0.0.1:8000/blog/templates/blog/img/1.png" alt="1.jpg">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque odit unde necessitatibus minus officiis assumenda molestias eaque ex harum consequuntur!</p>
-            <div id="author" class="flex xs:mt-3">
-                <img src="{% static 'blog/img/1.png' %}" alt="png">
-                <h1 class="ml-3">Berktug Berke Ates</h1>
-            </div>
+            <div>
+                {% for t in topweek  %}
+                    {% if t.last_week and t.is_active %}
+                        <h1 class="xs:text-xl xs:font-semibold xs:ml-2 xs:mt-2 xs:mb-2">{{t.title}}</h1>
+                        <img src="{{t.image.url}}" alt="1.jpg">
+                        <p>{{t.description|safe|slice:"0:200"}}...</p>
+                        <div id="author" class="flex xs:mt-3">
+                            <h1 class="font-bold">{{t.author}}</h1>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>    
         </div>
     </div>
     <div id="cards" class="bg-blate-50 xs:mt-6 tablet:basis-2/4">
@@ -23,9 +28,9 @@
             {%if blog.is_active%}
                 <div class="card bg-slate-50 xs:p-4 xs:pb-12 xs:mb-3 tablet:mr-3">
                     <div class="lg:relative lg:pb-14 xs:relative">
-                        <h1 class="xs:text-2xl tablet:text-3xl font-semibold">{{blog.title}}</h1>
-                        <img src="http://127.0.0.1:8000/blog/templates/blog/img/1.png" alt="1.jpg">
-                        <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">{{blog.description}}</p>
+                        <h1 class="xs:text-2xl xs:mb-2 tablet:text-3xl font-semibold">{{blog.title}}</h1>
+                        <img src="{{blog.image.url}}" alt="1.jpg">
+                        <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">{{blog.description|safe}}</p>
                         <button type="button" class="text-white bg-indigo-400 border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 absolute xs:right-0 tablet:ml-4"><a href="#">Details</a></button>
                     </div>   
                 </div>

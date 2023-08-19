@@ -18,7 +18,7 @@ class CategoryAdmin(admin.ModelAdmin):
     search_fields = ("name",)
 
 class TopWeekAdmin(admin.ModelAdmin):
-    list_display = ("title","is_home","slug",)
+    list_display = ("title","is_active","is_home","last_week","slug",)
     search_fields = ("title",)
 
 admin.site.register(Blog,BlogAdmin)

@@ -1,17 +1,7 @@
-{% extends "layout.html" %}
-{% load static %}
-{% block title %} Home {% endblock %}
+{% extends 'layout.html' %}
+{% block title %} Blog Detail {% endblock %}
 
 {% block css %}
-main #topics{
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-main #most{
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-main #cards .card{
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
 {% endblock %}
 
 {% block content %}
@@ -42,29 +32,28 @@ main #cards .card{
                                     <button type="button" class="text-white bg-indigo-400 border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 absolute xs:right-0 tablet:ml-4"><a href="{% url 'blog_details' t.id %}">Details</a></button>
                                 </div>   
                             </div>
+                        {% else %}
                         {%endif%}
                     {%endfor%}
             </div>
         </div>
-        <div id="cards" class="tablet:1/2 lg:basis-3/4 tablet:mt-6">
-            {% for blog in blogs %}
-                {% if blog.is_home and blog.is_active %}
-                    <div class="card bg-slate-50 xs:p-2 xs:pb-12 xs:mb-3 tablet:mr-3">
-                        <div class="xs:relative lg:relative">
-                            <h1 class="xs:text-2xl xs:mb-2 tablet:text-3xl font-semibold">{{ blog.title }}</h1>
-                            <img class="object-contain xs:w-2/3 tablet:w-1/4 lg:w-1/6" src="{{blog.image.url}}" alt="">
-                            <p class="object-contain xs:text-lg xs:mt-3 xs:mb-4 xs:text-lg tablet:text-xl">{{blog.description|safe|slice:"0:200"}}</p>
-                            <div id="author" class="xs:flex xs:items-center xs:mt-6 tablet:mt-12">
-                                <h1 class="text-gray-500 font-bold">{{blog.author}}</h1>
-                                <button type="button" class="text-white bg-indigo-400 border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 absolute xs:right-0 tablet:ml-4"><a href="{% url 'blog_details' blog.id %}">Details</a></button>
-                            </div>
-                        </div>  
-                    </div>
-                {% endif%}  
-            {% endfor %}          
+        <div id="blog_detail" class="lg:basis-3/4 tablet:mt-6">
+            {% if blog %}
+                <div class="card bg-slate-50 xs:p-2 xs:pb-12 xs:mb-3 tablet:mr-3">
+                    <div class="xs:relative lg:relative">
+                        <h1 class="xs:text-2xl xs:mb-2 tablet:text-3xl font-semibold">{{ blog.title }}</h1>
+                        <img class="object-contain xs:w-2/3 tablet:w-1/4 lg:w-1/6" src="{{blog.image.url}}" alt="">
+                        <p class="object-contain xs:text-lg xs:mt-3 xs:mb-4 xs:text-lg tablet:text-xl">{{blog.description|safe}}</p>
+                        <div id="author" class="xs:flex xs:items-center xs:mt-6 tablet:mt-12">
+                            <h1 class="text-gray-500 font-bold">{{blog.author}}</h1>
+                        </div>
+                    </div>  
+                </div> 
+            {% endif %}          
         </div>
         <div id="ads">
             
         </div>
     </main>
-{% endblock %}
+
+{% endblock %}    

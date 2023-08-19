@@ -28,7 +28,10 @@ class TopWeek(models.Model):
     image = models.ImageField(upload_to="blog")
     description = RichTextField()
     is_home = models.BooleanField(default=False)
+    is_active = models.BooleanField(default=False)
+    last_week = models.BooleanField(default=False)
     slug = models.SlugField(null=False,unique= True, db_index= True,)
+    author = models.CharField(max_length=200, null=True)
 
     def __str__(self):
         return f"{self.title}"
