@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Blog,Category,TopWeek
+from .models import Blog,Category,TopWeek,Softwarelang
 # Register your models here.
 
 class BlogAdmin(admin.ModelAdmin):
@@ -21,6 +21,13 @@ class TopWeekAdmin(admin.ModelAdmin):
     list_display = ("title","is_active","is_home","last_week","slug",)
     search_fields = ("title",)
 
+class SoftwarelangAdmin(admin.ModelAdmin):
+    list_display = ("title","is_active","is_discovery",)
+    search_fields = ("title",)
+
+
+
 admin.site.register(Blog,BlogAdmin)
 admin.site.register(Category,CategoryAdmin)
 admin.site.register(TopWeek,TopWeekAdmin)
+admin.site.register(Softwarelang,SoftwarelangAdmin)

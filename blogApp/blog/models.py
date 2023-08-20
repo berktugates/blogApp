@@ -36,4 +36,11 @@ class TopWeek(models.Model):
     def __str__(self):
         return f"{self.title}"
 
-              
+
+class Softwarelang(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to="discovery")
+    description = RichTextField()
+    is_active= models.BooleanField(default=False)
+    is_discovery = models.BooleanField(default=False)
+    slug = models.SlugField(null=False,unique= True, db_index= True,)

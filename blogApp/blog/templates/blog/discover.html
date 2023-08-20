@@ -13,9 +13,9 @@
                     {% if t.last_week and t.is_active %}
                         <h1 class="xs:text-xl xs:font-semibold xs:ml-2 xs:mt-2 xs:mb-2">{{t.title}}</h1>
                         <img src="{{t.image.url}}" alt="1.jpg">
-                        <p>{{t.description|safe|slice:"0:200"}}...</p>
+                        <p>{{t.description|safe}}</p>
                         <div id="author" class="flex xs:mt-3">
-                            <h1 class="font-bold">{{t.author}}</h1>
+                            <h1 class="text-gray-500 font-bold">{{t.author}}</h1>
                         </div>
                     {% endif %}
                 {% endfor %}
@@ -24,14 +24,14 @@
     </div>
     <div id="cards" class="bg-blate-50 xs:mt-6 tablet:basis-2/4">
         <h1 class="xs:mb-4 xs:text-2xl xs:font-bold"><i class="fa-solid fa-compass xs:mr-2 xs:ml-3"></i>For You</h1>
-        {% for blog in blogs %}
-            {%if blog.is_active%}
+        {% for l in languages %}
+            {%if l.is_active%}
                 <div class="card bg-slate-50 xs:p-4 xs:pb-12 xs:mb-3 tablet:mr-3">
                     <div class="lg:relative lg:pb-14 xs:relative">
-                        <h1 class="xs:text-2xl xs:mb-2 tablet:text-3xl font-semibold">{{blog.title}}</h1>
-                        <img src="{{blog.image.url}}" alt="1.jpg">
-                        <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">{{blog.description|safe}}</p>
-                        <button type="button" class="text-white bg-indigo-400 border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 absolute xs:right-0 tablet:ml-4"><a href="#">Details</a></button>
+                        <h1 class="xs:text-2xl xs:mb-2 tablet:text-3xl font-semibold">{{l.title}}</h1>
+                        <img src="{{l.image.url}}" alt="1.jpg">
+                        <p class="xs:text-lg xs:mt-3 xs:mb-3 xs:text-lg tablet:text-xl">{{l.description|safe|slice:"0:500"}}...</p>     
+                        <button type="button" class="text-white bg-indigo-400 border focus:outline-none focus:ring-4 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 absolute xs:right-0 tablet:ml-4"><a href="{% url 'discovery_blog_details' l.slug %}">Details</a></button>
                     </div>   
                 </div>
             {% endif %}
